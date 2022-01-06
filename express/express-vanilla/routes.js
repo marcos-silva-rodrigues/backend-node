@@ -9,8 +9,18 @@ router.get('/info/:name', (req, res) => {
   });
 });
 
-router.get('/body', (req, res) => {
+router.post('/body', (req, res) => {
   return res.json(req.body);
+});
+
+router.get('/error', (req, res, next) => {
+  return next(new Error('custom error'));
+});
+
+router.use((err, req, res, next) => {
+  return res.status(500).json({
+    message: 'custom error middleware'
+  });
 });
 
 module.exports = router;

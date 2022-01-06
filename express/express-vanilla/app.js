@@ -3,8 +3,11 @@ const path = require('path');
 
 const app = express();
 const routes = require('./routes');
+const customMiddleware = require('./middleware');
 
-app.get('/api', (req, res) => {
+// app.use(customMiddleware)
+
+app.get('/api', customMiddleware, (req, res) => {
   return res.send('Node Backend with express.js');
 });
 
