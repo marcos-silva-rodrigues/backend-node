@@ -7,15 +7,20 @@ const customMiddleware = require('./middleware');
 
 // app.use(customMiddleware)
 
-app.get('/api', customMiddleware, (req, res) => {
-  return res.send('Node Backend with express.js');
-});
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'public', 'views'));
+
+app.get('/', (req, res) => {
+  return res.render('index', {
+    message: 'Hello from Express.js with Pug'
+  })
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')))
+app.use('public', express.static(path.join(__dirname, 'public')))
 
-app.use('/api', routes);
+app.use('/api', customMiddleware, routes);
 
 app.listen(3000, () => {
   console.log('Express Started');
