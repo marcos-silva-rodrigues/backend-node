@@ -1,16 +1,18 @@
 const express = require('express');
-const app = express();
+const path = require('path');
 
+const app = express();
 const routes = require('./routes');
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   return res.send('Node Backend with express.js');
 });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', routes);
+app.use('/api', routes);
 
 app.listen(3000, () => {
   console.log('Express Started');
