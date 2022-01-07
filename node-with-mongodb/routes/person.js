@@ -56,4 +56,14 @@ router.put('/:id', async (req, res) => {
   };
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const people = await Person.findByIdAndDelete(req.params.id);
+
+    return res.json(people);
+  } catch {
+    return res.status(500).send("Error");
+  };
+});
+
 module.exports = router;
