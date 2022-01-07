@@ -23,4 +23,37 @@ router.get('/:id', async (req, res) => {
   };
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const people = await Person.create({
+      name: {
+        firstname: 'Marcos',
+        lastname: 'Fulano'
+      },
+      age: 23
+    });
+
+    return res.json(people);
+  } catch {
+    return res.status(500).send("Error");
+  };
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const people = await Person.findByIdAndUpdate({ 
+      _id: req.params.id
+    }, {
+      name: {
+        firstname: 'Fulano',
+        lastname: 'Silva'
+      }
+    });
+
+    return res.json(people);
+  } catch {
+    return res.status(500).send("Error");
+  };
+});
+
 module.exports = router;
