@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // mongoose connect
-const db = mongoose.connect('mongodb://localhost:27017/libray', {
+const db = mongoose.connect('mongodb://localhost:27017/parking', {
   authSource: "admin",
   user: 'root',
   pass: 'example',
