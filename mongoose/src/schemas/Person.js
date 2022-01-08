@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const createdPlugin = require('./plugins/created');
 
 const Person = mongoose.Schema({
   name: {
@@ -26,12 +27,14 @@ Person.statics.findByName = function(name) {
   return this.find({
     'name.firstName': name
   });
-}
+};
 
 Person.methods.ageGreaterThan20 = function (age) {
   if (age > 20) return true;
 
   return false;
-} 
+};
+
+Person.plugin(createdPlugin, {});
 
 module.exports = mongoose.model('Person', Person);
