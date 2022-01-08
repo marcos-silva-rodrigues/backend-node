@@ -6,6 +6,7 @@ const Person = mongoose.Schema({
     lastname: String,
   },
   age: {
+    // type: mongoose.SchemaTypes.Mixed, 
     type: Number, 
   }
 }, {
