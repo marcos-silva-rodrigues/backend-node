@@ -28,4 +28,10 @@ Person.statics.findByName = function(name) {
   });
 }
 
+Person.methods.ageGreaterThan20 = function (age) {
+  if (age > 20) return true;
+
+  return false;
+} 
+
 module.exports = mongoose.model('Person', Person);
