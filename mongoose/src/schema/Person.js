@@ -22,4 +22,10 @@ Person.virtual('name.fullname').set(function(name) {
   this.name.lastName  = name.lastName
 });
 
+Person.statics.findByName = function(name) {
+  return this.find({
+    'name.firstName': name
+  });
+}
+
 module.exports = mongoose.model('Person', Person);
