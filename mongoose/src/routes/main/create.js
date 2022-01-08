@@ -1,12 +1,12 @@
 const Person = require('../../schema/Person');
 
 module.exports = async (req, res) => {
-  const { firstname, lastname, age, city } = req.body;
+  const { firstName, lastName, age, city } = req.body;
   try {
     const data = {
       name: {
-        firstname,
-        lastname
+        firstName,
+        lastName
       },
       age,
       city
