@@ -8,6 +8,8 @@ const Person = mongoose.Schema({
   age: {
     type: Number, 
   }
+}, {
+  strict: false,
 });
 
 module.exports = mongoose.model('Person', Person);
