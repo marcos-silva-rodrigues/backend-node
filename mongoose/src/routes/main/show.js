@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     console.log(person.name.fullname);
     console.log(person.age, person.ageGreaterThan20());
     return res.json({ person });
-  } catch (error) {
-    return res.json({error: e.message});
+  } catch (err) {
+    return res.json({error: err.message});
   };
 };

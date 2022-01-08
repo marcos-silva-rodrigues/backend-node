@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const personCreated = await Person.create(data);
 
     return res.json({ body: personCreated });  
-  } catch(e) {
-    return res.json({ error: e.message });
+  } catch(err) {
+    return res.json({ error: err.message });
   }
 }

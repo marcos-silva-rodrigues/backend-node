@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
   try {
     const results = await Person.findByName(req.params.name);
     return res.json({ results });
-  } catch (error) {
-    return res.json({error: e.message});
+  } catch (err) {
+    return res.json({error: err.message});
   };
 }
