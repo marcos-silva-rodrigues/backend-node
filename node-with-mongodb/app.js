@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
 const methodoverride = require('method-override');
 const hbs = require('hbs');
 const indexRouter = require('./routes/index');
@@ -22,6 +23,9 @@ hbs.registerHelper('equals', (val1, val2, options) => {
   return val1 === val2 ? options.fn(this) : options.inverse(this);
 })
 
+app.use(session({
+  secret: 'parkingsystem'
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

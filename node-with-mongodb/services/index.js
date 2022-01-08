@@ -1,3 +1,5 @@
 exports.index = (req, res) => {
-  res.render('index', { title: 'Welcome to parking system' });
+  res.render('index', {
+    user: req.session.user
+  });
 }
