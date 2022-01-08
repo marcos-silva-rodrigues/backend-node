@@ -1,4 +1,4 @@
-  const Person = require('../../schema/Person');
+const Person = require('../../schemas/Person');
 
 module.exports = async (req, res) => {
   try {
