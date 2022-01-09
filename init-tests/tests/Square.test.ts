@@ -10,6 +10,10 @@ describe('Square', () => {
     square = new Square(10);
   });
 
+  before(() => {
+    console.log("starting tests");
+  });
+
   it('returns value', () => {
     square.value.should.equal(10);
   });
@@ -17,4 +21,12 @@ describe('Square', () => {
   it('getArea is equal 100', () => {
     square.getArea().should.equal(100);
   });
+
+  afterEach(() => {
+    console.log('After Each Hook');
+  });
+
+  after(() => {
+    console.log("finished tests");
+  })
 });
