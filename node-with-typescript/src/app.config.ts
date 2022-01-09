@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import mongoose from 'mongoose';
 
 class App {
   private app: Application;
@@ -7,11 +8,12 @@ class App {
   constructor(appConfig: { port: number, middlewares: any, controllers: any }) {
     this.app = express();
     this.port = appConfig.port;
+    this.setMongooseConnection();
     this.setMiddlewares(appConfig.middlewares);
     this.setController(appConfig.controllers);
   }
 
-  public listen() {
+  public listen(): void {
     this.app.listen(this.port, () => {
       console.log("Express has been started ...");
     });
@@ -28,6 +30,17 @@ class App {
       this.app.use('/', controller.router);
     });
   }
+
+  private setMongooseConnection() {
+    mongoose.connect('mongodb://localhost:27017/type', {
+      authSource: 'admin',
+      auth: {
+        username: 'root',
+        password: 'example'
+      }
+    });
+  }
+
 }
 
 export default App;
