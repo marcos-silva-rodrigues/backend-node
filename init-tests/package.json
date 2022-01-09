@@ -6,7 +6,7 @@
   "scripts": {
     "babel-node": "babel-node --presets=env",
     "start": "nodemon --exec npm run babel-node -- ./src/index.js",
-    "test": "mocha --require babel-core/register --recursive ./tests/"
+    "test": "mocha --require babel-core/register --recursive ./tests/*.test.ts"
   },
   "keywords": [],
   "author": "",
