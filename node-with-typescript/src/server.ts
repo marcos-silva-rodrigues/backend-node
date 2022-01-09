@@ -1,8 +1,8 @@
 import express, { RequestHandler } from 'express';
 import morgan from 'morgan';
 
-import App from './app';
-import HomeController from './controllers/HomeController';
+import App from './app.config';
+import HomeController from './controllers/home.controller';
 import myMiddleware from './middlewares/log.middleware';
 
 const app = new App({
