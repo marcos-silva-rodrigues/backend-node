@@ -4,7 +4,7 @@ import TaskService from '../services/task.services';
 export default class HomeController {
 
   public router = express.Router();
-  public path = '/task';
+  public path = '/tasks';
   private taskService: TaskService;
 
   constructor() {
@@ -15,6 +15,7 @@ export default class HomeController {
   private setupRoutes() {
     this.router.get(`${this.path}`, this.taskService.findAll);
     this.router.post(`${this.path}`, this.taskService.create);
+    this.router.get(`${this.path}/:id`, this.taskService.findOne);
   }
 
  }
