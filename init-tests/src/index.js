@@ -13,3 +13,5 @@ routes(app);
 app.listen(3000, () => {
   console.log("Express has been started ...");
 });
+
+export default app;
