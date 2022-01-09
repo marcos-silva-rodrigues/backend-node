@@ -16,8 +16,8 @@ describe('Binary API', () => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have.property('number').eql('1100100');
+        done();
       });
 
-      done();
   });
 });
