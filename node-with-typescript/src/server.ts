@@ -2,7 +2,7 @@ import express, { RequestHandler } from 'express';
 import morgan from 'morgan';
 
 import App from './app.config';
-import HomeController from './controllers/home.controller';
+import TaskController from './controllers/task.controller';
 import myMiddleware from './middlewares/log.middleware';
 
 const app = new App({
@@ -14,7 +14,7 @@ const app = new App({
     myMiddleware
   ],
   controllers: [
-    new HomeController(),
+    new TaskController(),
   ],
 })
 
