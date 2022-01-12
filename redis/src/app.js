@@ -1,13 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/cache', {
-  authSource: 'admin',
-  auth: {
-    password: 'example',
-    username: 'root'
-  }
-});
+mongoose.connect('mongodb://localhost:27017/cache');
 
 const app = express();
 
