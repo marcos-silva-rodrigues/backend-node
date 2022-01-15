@@ -2,11 +2,8 @@ const User = require('../../model/user');
 
 module.exports = async (req, res) => {
   try {
-    const user = new User(req.body);
-    user.password = user.genHash(user.password);
-
-    const userCreated = await user.save();
-    return res.redirect('/');
+    const users = await User.find({});
+    return res.render('users', { users });
   } catch (err) {
     return res.status(500).json({ msg: err.message })
   }

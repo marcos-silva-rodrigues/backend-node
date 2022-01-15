@@ -15,6 +15,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(methodOverride('_method'))
 app.use(passport.initialize());
 app.set('view engine', 'pug');
 
