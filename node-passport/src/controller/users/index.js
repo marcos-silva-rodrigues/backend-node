@@ -1,10 +1,11 @@
 const { Router } = require('express');
+const isAuth = require('../../auth/middleware');
 
 const router = Router();
 
 module.exports = (passport) => {
 
-  router.get('/', require('./all'));
+  router.get('/', isAuth, require('./all'));
   // router.post('/', require('./create'));
   router.post('/', passport.authenticate('local-signup', {
     successRedirect: '/',
@@ -12,7 +13,7 @@ module.exports = (passport) => {
   }));
 
   router.get('/new', require('./new'));
-  router.delete('/:id', require('./remove'));
+  router.delete('/:id', isAuth, require('./remove'));
 
   return router;
 }

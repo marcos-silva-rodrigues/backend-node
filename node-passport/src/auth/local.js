@@ -47,12 +47,10 @@ module.exports = (passport) => {
     },
     async (req, username, password, cb) => {
       const userExists = await User.findOne({ username });
-      console.log(userExists)
       if(!userExists) return cb(null, false);
 
       userExists.validPassord(password, (err, result) => {
         if(!result || err) return cb(null, false);
-        console.log("User Valido");
         return cb(null, userExists);
       })
 
