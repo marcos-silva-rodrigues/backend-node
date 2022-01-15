@@ -23,6 +23,19 @@ app.set('views', path.join(__dirname, 'src', 'view'));
 require('./src/index')(app);
 
 mongoose.connect('mongodb://localhost:27017/auth');
-app.listen(3000, () => {
-  console.log('Express has been started')
+
+mongoose.connection.on('error', (err) => {
+  console.log("Error Mongoose Connection");
+  console.log(err.message);
+  process.exit(1);
 });
+
+mongoose.connection.on('connected', () => {
+  console.log("Mongoose Connection Sucess");
+  
+  app.listen(3000, () => {
+    console.log('Express has been started')
+  });
+});
+
+
