@@ -3,7 +3,7 @@ const isAuth = require('../../auth/middleware');
 
 const router = Router();
 
-router.get('/', isAuth,  require('./main'));
+router.get('/', require('./main'));
 
 
 module.exports = router;

@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-  return res.render('main');
+  return res.render('main', {
+    user: req.user || null
+  });
 }
