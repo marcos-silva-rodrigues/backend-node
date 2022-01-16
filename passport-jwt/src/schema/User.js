@@ -20,4 +20,8 @@ User.methods.hashPassword = (password) => {
   return bcryptjs.hashSync(password, bcryptjs.genSaltSync(7), null);
 }
 
+User.methods.validatePassword = function(password) {
+  return bcryptjs.compareSync(password, this.password);
+}
+
 module.exports = mongoose.model('User', User);

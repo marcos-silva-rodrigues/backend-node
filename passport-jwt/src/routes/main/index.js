@@ -1,7 +1,13 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-router.get('/', require('./main'));
+module.exports = (passport) => {
+  router.get(
+    "/",
+    passport.authenticate("token", { session: false }),
+    require("./main")
+  );
 
-module.exports = router;
+  return router;
+};
