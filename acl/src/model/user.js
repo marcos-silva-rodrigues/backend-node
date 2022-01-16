@@ -18,7 +18,12 @@ const User = mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  role: {
+    type: String,
+    required: true,
   }
+
 });
 
 User.methods.genHash = (password) => {
