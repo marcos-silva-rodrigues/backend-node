@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const acl = require('express-acl');
 
 /* PASSPORT BASIC */
 // passport.use(require('./src/auth/basic'));
@@ -38,6 +39,13 @@ app.use(passport.session());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'src', 'view'));
 
+acl.config({
+  filename: 'src/acl.json',
+  baseUrl: '/',
+  roleSearchPath: 'user.role'
+});
+
+app.use(acl.authorize);
 require('./src/index')(app, passport);
 
 mongoose.connect('mongodb://localhost:27017/acl');
