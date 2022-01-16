@@ -1,3 +1,3 @@
 module.exports = (app) => {
-  app.use('/', require('./main'));
+  app.use('/tasks', require('./tasks'));
 }
